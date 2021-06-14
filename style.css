@@ -158,7 +158,7 @@ body {
   max-width: 100%;
   max-height: var(--image-max-width);
   margin-top: var(--image-margin);
-  transform: translateX(100px)
+  transform: translateX(120px)
 }
 
 /* Instructions */
