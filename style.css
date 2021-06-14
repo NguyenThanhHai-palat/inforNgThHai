@@ -112,6 +112,16 @@ body {
 }
 
 /* Very light scaling for our illustration */
+.chantrang {
+  color: #FFFFFF;
+  font-family: HK Grotesk;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 34px;
+  line-height: 105%;
+  margin: 0;
+}
+  
 .title {
   color: #000033;
   font-family: HK Grotesk;
