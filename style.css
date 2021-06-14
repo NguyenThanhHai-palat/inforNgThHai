@@ -1,4 +1,3 @@
-
 :root {
   --color-bg: #0000FF;
   --color-text-main: #000000;
@@ -20,7 +19,7 @@
 /* Import fonts */
 @font-face {
   font-family: HK Grotesk;
-  src: url("https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
+  src: url(https://fonts.gstatic.com/s/barlowcondensed/v5/HTxxL3I-JCGChYJ8VI-L6OO_au7B6xTj1lHzhKg.woff2")
     format("opentype");
 }
 @font-face {
@@ -122,6 +121,34 @@ body {
   line-height: 105%;
   margin: 0;
 }
+.text {
+  color: #00FF33;
+  font-family: HK Grotesk;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 105%;
+  margin: 0;
+}
+.title2 {
+   color: #FF3333;
+  font-family: HK Grotesk;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 85%;
+  margin: 0;
+  
+}
+.text2 {
+  color: #FF0000;
+  font-family: HK Grotesk;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 105%;
+  margin: 0;
+}
 
 /* Very light scaling for our illustration */
 .illustration {
@@ -165,3 +192,4 @@ h2 {
 .rotated {
   transform: rotate(360deg);
 }
+
