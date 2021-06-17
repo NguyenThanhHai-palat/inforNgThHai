@@ -31,8 +31,8 @@
       <div>
           <div id="downloadMe">The Cup Of Life.mp3 Tải Nhạc</div>
         <button onclick="download()">Download</button>
-          <script type="mp3/javascript">
-              function save(dataToDownload,filename) {
+          <script type="text/javascript">
+              function saveAs(dataToDownload,filename) {
 	var element = document.createElement('a');
 	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(dataToDownload));
 	element.setAttribute('download', filename);
@@ -42,8 +42,9 @@
 	document.body.removeChild(element);
               }
         function download() {
+	    var text = document.getElementById('downloadMe').innerText;
 	    var file = 'The Cup Of Life.mp3';
-	    save(file)
+	    saveAs(file)
         }</script>
 
       </div>
