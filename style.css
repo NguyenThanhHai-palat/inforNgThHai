@@ -19,7 +19,7 @@
 /* Import fonts */
 @font-face {
   font-family: HK Grotesk1;
-  src: url("https://fonts.gstatic.com/s/gentiumbasic/v12/WnzmHAw9aB_JD2VGQVR80We3LAixMT8ub6KM.woff2")
+  src: url("https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxK.woff2)
     format("opentype");
 }
 @font-face {
@@ -144,8 +144,8 @@ body {
   margin: 0;
   
 }
-.text2 {
-  color: #FF0000;
+.covid19dn {
+  color: #DF3A01;
   font-family: HK Grotesk1;
   font-style: normal;
   font-size: 23px;
