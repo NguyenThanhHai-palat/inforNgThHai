@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nguyễn Thanh Hải</title>
+     <link rel="stylesheet" href="/skin.css" />
+    <script src="/script.js" defer></script>
+    
+    <link rel="icon" type="image/x-icon" href="https://lh3.googleusercontent.com/-BLW11uRCWm8/YL62sfjsUpI/AAAAAAAAC3c/g6VQJjHfEm8EnMxLMXR5UdNX3xw7h4KHACEwYBhgLKtMDABHVOhyPr0Xsu3I1Gw66b_X0gnhFK5O6MfbEYMj9rJcFIjjT-bgA-z-_FJOGDKzoNh3Lwnm4rsiky0eFiDu1WNOyNVLhJqsMH82ZenqiyEwrr6-lPKZmtFYbudCnfhcrrR42_Jy1LCsp6FuNv4OfPHL8pcZhNHxsDDH6nPPtRUj5b4VP6rIPJLdEiLvJ0JNKdAkv87gHIWmgcYm_38rKdg9qCCfy8IxVKVt1XL3yAef02ic6t_gMVUwwSyuSura9krNJioI-9CD2ZMZsg0WQBwfzqf4HB3jdWb4T53UoJzLf2HJHMI1-6zdY3uXE2JYe8BLM04uqSHNuGEUjhuUZHvNDg6vx0W2LURZT6-TT4UItYvaYBD07QX4qW18BRKNdJYYvmOAm-h3wpzSxWsYRxKoXVEzNL8jldQsjDFMiRBt9NejsGEHiCT8Ur3BMtZzRFJzCUW0TOC9uVyf893pUp0X2-ZxkN36CLbnRJ6Qrj_ddPTsboz6kJZBQLlUWXmvl6H_EWx711PpsEBf5P4BPMY0uM849Y4jrOKio9EZnn-j6tQq-rTTkqVct5KwXnghsbVr3-BNIlcGjmotO32dDGYXPSr5P5RCc0Hn9CIUZTFqRLv0wn8SWhgY/w140-h140-p/F5DBA098-34E3-484E-95F0-743AF44D3871.jpeg">
+    <meta />  
+  </head>
+  <body>
+    <p id="ngaythangnam" ></p>
+    <span id="gio"></span><span> giờ </span><span id="phut"></span><span> phút</span>
+
+    <script>
+    var n = new Date();
+    document.getElementById("ngaythangnam").innerHTML = n;
+  </script>
+  <script>
+    var time = new Date().getHours();
+    if (time < 9) {
+     document.getElementById("time").innerHTML = "Buổi Sáng Tốt Lành!";
+}
+  </script>
+  <script>
+     var gio = new Date().getHours();
+     document.getElementById("gio").innerHTML = gio;
+
+  </script>
+  <script>
+    var phut = new Date().getMinutes()
+     document.getElementById("phut").innerHTML = phut;
+  </script>
+ 
+    <div><img
+          src="https://lh3.googleusercontent.com/-BLW11uRCWm8/YL62sfjsUpI/AAAAAAAAC3c/g6VQJjHfEm8EnMxLMXR5UdNX3xw7h4KHACEwYBhgLKtMDABHVOhyPr0Xsu3I1Gw66b_X0gnhFK5O6MfbEYMj9rJcFIjjT-bgA-z-_FJOGDKzoNh3Lwnm4rsiky0eFiDu1WNOyNVLhJqsMH82ZenqiyEwrr6-lPKZmtFYbudCnfhcrrR42_Jy1LCsp6FuNv4OfPHL8pcZhNHxsDDH6nPPtRUj5b4VP6rIPJLdEiLvJ0JNKdAkv87gHIWmgcYm_38rKdg9qCCfy8IxVKVt1XL3yAef02ic6t_gMVUwwSyuSura9krNJioI-9CD2ZMZsg0WQBwfzqf4HB3jdWb4T53UoJzLf2HJHMI1-6zdY3uXE2JYe8BLM04uqSHNuGEUjhuUZHvNDg6vx0W2LURZT6-TT4UItYvaYBD07QX4qW18BRKNdJYYvmOAm-h3wpzSxWsYRxKoXVEzNL8jldQsjDFMiRBt9NejsGEHiCT8Ur3BMtZzRFJzCUW0TOC9uVyf893pUp0X2-ZxkN36CLbnRJ6Qrj_ddPTsboz6kJZBQLlUWXmvl6H_EWx711PpsEBf5P4BPMY0uM849Y4jrOKio9EZnn-j6tQq-rTTkqVct5KwXnghsbVr3-BNIlcGjmotO32dDGYXPSr5P5RCc0Hn9CIUZTFqRLv0wn8SWhgY/w140-h140-p/F5DBA098-34E3-484E-95F0-743AF44D3871.jpeg"
+          class="illustration"
+          alt="Hinh_daidien"
+          title="Đây là hình đại diện"
+        />
+     
+    </div>
+    <div>
+      <h1 class="title" style="text-align: center">
+     Nguyễn Thanh Hải
+    </h1>
+    <h2 class="title2" style="text-align: center">
+      Sinh Ngày 12/7/2008
+    </h2>
+    </div>
+    <div><p id="time"></p></div>
+      <div>
+          <div id="downloadMe">The Cup Of Life.mp3 Tải Nhạc</div>
+        <button onclick="download()">Download</button>
+          <script type="text/javascript">
+              function save(dataToDownload,filename) {
+  var element = document.createElement('a');
+	element.setAttribute('href', 'data:mp3/plain;charset=utf-8,' + encodeURIComponent(dataToDownload));
+	element.setAttribute('download', filename);
+	element.style.display = 'none';
+	document.body.appendChild(element);
+	element.click();
+	document.body.removeChild(element);
+              }
+        function download() {
+	    var mp3 = document.getElementById('downloadMe').innerMp3;
+	    var file = 'The Cup Of Life.mp3';
+	    save(mp3,file)
+        }</script>
+
+      </div>
+    <div>
+        <div>
+            <audio controls>
+        
+        <source src="/The Cup Of Life.mp3" type="audio/mpeg">
+        </audio>
+        </div>
+        <div>
+            <iframe width="460" height="171" src="https://www.youtube.com/embed/YEh6DJRzrd0" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      <div>
+      <h3>
+        Sở thích :
+      </h3>
+      </div>
+    <ol>
+      <li>Chơi Game</li>
+      <li>Viết code</li>
+      <li>Làm Pack cho minecraft</li>
+    </ol>
+    </div>
+    <div>
+  <h3>
+    Liên hệ
+    </h3>
+    </div>
+    <div>
+      <from>
+        <label>Liên hệ</label>
+        <input type="text" placeholder="Noinput"/><li>
+      </from>
+    </div>
+     <div>
+      <from>
+        <button>
+          nothing
+        </button>
+      </from>
+    </div>
+    <div>
+      <footer>
+        <h3>
+	THÔNG TIN LIÊN LẠC:
+        </h3>
+        <ul>
+         <li><a href="mailto:Nguyenthanhhai12072008@gmail.com">Email:Nguyenthanhhai12072008@gmail.com</a></li>
+          <li>SĐT (ZALO) : 0904548361</li>
+          <li><a href="https://www.facebook.com/palat.gaming.lcad/">Facebook</a></li>
+        </ul>
+      </footer>
+    </div>
+	  <div> <h3 class="covid19dn" style="text-align": center> Thông tin covid tỉnh Đồng Nai! </h3>
+		<div>
+			
+		</div>
+	  </div>
+ 
+    <div><strong>IP WED PROTECTED BY CLOUDFLARE</strong>
+    </div>
+    <div>
+      <strong> Trang được viết bởi Ng Th Hải </strong>
+    </div>
+    <div  style="text-align": center>
+      <strong>COPYRIGHTS (C) NGUYENTHANHHAI</strong>
+        </div>
+    <p>update day 14/7/2021</p>
+  </body>
+</html>
