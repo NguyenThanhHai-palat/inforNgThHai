@@ -1,5 +1,5 @@
 :root {
-  --color-bg: #0070FF;
+  --color-bg: #F8F8FF;
   --color-text-main: #000000;
   --color-primary: #FFFF00;
   --wrapper-height: 87vh;
@@ -147,6 +147,15 @@ body {
   font-size: 23px;
   line-height: 105%;
   margin: 0;
+  }
+  .Ngaygio{
+   color: #FF3333;
+  font-family: HK Grotesk1;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 85%;
+  margin: 0;
 }
 
 /* Very light scaling for our illustration */
@@ -163,14 +172,23 @@ body {
 }
 
 /* Button - Add it from the README instructions */
-button,
-input {
+button {
   font-family: inherit;
   font-size: 100%;
-  background: #FFFFFF;
+  background: #D2691E;
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 4px;
+  padding: 0.5rem 1rem;
+  transition: 500ms;
+}
+input {
+  font-family: inherit;
+  font-size: 100%;
+  background: #E0FFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 2px;
   padding: 0.5rem 1rem;
   transition: 500ms;
 }
