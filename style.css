@@ -28,6 +28,12 @@
   src: url("https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
     format("opentype");
 }
+@font-face {
+  font-family: HK Grotesk2;
+  font-weight: bold;
+  src: url("https://fonts.gstatic.com/s/googlesans/v14/4UaGrENHsxJlGDuGo1OIlL3Owp4.woff2")
+    format("opentype");
+}
 
 /* Our remix on glitch button */
 .btn--remix {
@@ -141,11 +147,12 @@ body {
   
 }
 .covid19dn {
-  color: #DF3A01;
-  font-family: HK Grotesk1;
+  color: #00306A;
+  font-family: HK Grotesk;
   font-style: normal;
   font-size: 23px;
   line-height: 105%;
+  font-weight: bold
   margin: 0;
   }
   .Ngaygio{
@@ -153,10 +160,27 @@ body {
   font-family: HK Grotesk1;
   font-style: normal;
   font-weight: bold;
-  font-size: 23px;
-  line-height: 85%;
+  font-size: 20px;
+  line-height: 80%;
   margin: 0;
 }
+.Thu{
+   color: #FF3333;
+  font-family: HK Grotesk2;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 80%;
+  margin: 0;
+}
+.Socacovid{
+   color: #DF3A01;
+  font-family: HK Grotesk1;
+  font-style: normal;
+  font-size: 23px;
+  line-height: 105%;
+  margin: 0;
+  }
 
 /* Very light scaling for our illustration */
 .illustration {
