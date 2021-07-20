@@ -192,4 +192,16 @@ var thang = new Array();
     </div>
     <p>update day 20/7/2021</p>
 <p id="vikinhdo"></p>
+	    <script>
+		    var vk = document.getElementById("vikinhdo");
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    vk.innerHTML = "Chức năng không hỗ trợ trên trình duyệt của bạn !";
+  }
+function showPosition(position) {
+  vk.innerHTML = "Vĩ độ,  " + position.coords.latitude  + 
+  " Kinh độ: " + position.coords.longitude;
+}
+	    </script>
   </body></html>
