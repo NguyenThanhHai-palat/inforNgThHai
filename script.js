@@ -34,5 +34,17 @@ var thang = new Array();
   thang[10] = "Mười Một";
   thang[11] = "Mười Hai";
   var d = new Date();
-  var n = thang[d.getMonth()];
-  document.getElementById("thang").innerHTML = n;
+
+
+ var vk = document.getElementById("vikinhdo");
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+        vk.innerHTML = "Chức năng không hỗ trợ trên trình duyệt của bạn !";
+      }
+    function showPosition(position) {
+      vk.innerHTML = "Vĩ độ,  " + position.coords.latitude  + 
+      " Kinh độ: " + position.coords.longitude;
+
+    var n = thang[d.getMonth()];
+    document.getElementById("thang").innerHTML = n;
