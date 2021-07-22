@@ -118,6 +118,20 @@ body {
   style: center;
   overflow: scroll
 }
+ul.bar1 {
+  list-style-type: none;
+
+  overflow: hidden;
+
+}
+
+
+
+li a.opbar1 {
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
 .title {
   color: #000033;
   font-family: HK Grotesk;
