@@ -6,7 +6,32 @@
     <script src="/script.js" defer=""></script>
     
     <link rel="icon" type="image/x-icon" href="https://lh3.googleusercontent.com/-BLW11uRCWm8/YL62sfjsUpI/AAAAAAAAC3c/g6VQJjHfEm8EnMxLMXR5UdNX3xw7h4KHACEwYBhgLKtMDABHVOhyPr0Xsu3I1Gw66b_X0gnhFK5O6MfbEYMj9rJcFIjjT-bgA-z-_FJOGDKzoNh3Lwnm4rsiky0eFiDu1WNOyNVLhJqsMH82ZenqiyEwrr6-lPKZmtFYbudCnfhcrrR42_Jy1LCsp6FuNv4OfPHL8pcZhNHxsDDH6nPPtRUj5b4VP6rIPJLdEiLvJ0JNKdAkv87gHIWmgcYm_38rKdg9qCCfy8IxVKVt1XL3yAef02ic6t_gMVUwwSyuSura9krNJioI-9CD2ZMZsg0WQBwfzqf4HB3jdWb4T53UoJzLf2HJHMI1-6zdY3uXE2JYe8BLM04uqSHNuGEUjhuUZHvNDg6vx0W2LURZT6-TT4UItYvaYBD07QX4qW18BRKNdJYYvmOAm-h3wpzSxWsYRxKoXVEzNL8jldQsjDFMiRBt9NejsGEHiCT8Ur3BMtZzRFJzCUW0TOC9uVyf893pUp0X2-ZxkN36CLbnRJ6Qrj_ddPTsboz6kJZBQLlUWXmvl6H_EWx711PpsEBf5P4BPMY0uM849Y4jrOKio9EZnn-j6tQq-rTTkqVct5KwXnghsbVr3-BNIlcGjmotO32dDGYXPSr5P5RCc0Hn9CIUZTFqRLv0wn8SWhgY/w140-h140-p/F5DBA098-34E3-484E-95F0-743AF44D3871.jpeg">
-    <meta>  
+    <meta> 
+	<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+</style>
   </head>
    <body>
     <div>
@@ -67,7 +92,11 @@
      document.getElementById("nam").innerHTML = nam;
   </script>
 </div>
- <div class="tile" title="TRỞ LẠI TRANG CHỦ"><span><a  href="https://ngthhai-palat.cf/">TRANG CHỦ</a></span></div>
+ <ul class="bar">
+  <li class="bar"><a class="active; opbar" href="#">Trang Chủ</a></li>
+  <li class="bar"><a class="opbar"  href="https://ngthhai-palat.cf/covid19-ngthhai.html">Thông Tin Covid</a></li>
+  <li class="bar"><a class="opbar" href="https://ngthhai-palat.cf/dev.html">Các Phần Mềm Tự Phát Triển</a></li>
+</ul>
 
 	  <div> <h3 class="covid19dn" style="text-align: center" usemap="#workmap"> Thông tin covid </h3>
           <iframe src="https://ncov.moh.gov.vn/"></iframe>
