@@ -210,7 +210,10 @@ var thang = new Array();
      document.getElementById("nam").innerHTML = nam;
   </script>
 </div>
-
+<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
 <ul class="bar">
   <li class="bar"><a class="active; opbar" href="#">Trang Chủ</a></li>
   <li class="bar"><a class="opbar"  href="https://ngthhai-palat.cf/covid19-ngthhai.html">Thông Tin Covid</a></li>
@@ -335,10 +338,7 @@ var thang = new Array();
       <strong> Trang được viết bởi Ng Th Hải </strong>
     </div>
 	    
-<fb:login-button 
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
+
     <p>update day 20/7/2021</p>
 <p id="vikinhdo"></p>
 	    <script>
