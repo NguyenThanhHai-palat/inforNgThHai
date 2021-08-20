@@ -152,43 +152,40 @@ function drawHand(ctx, pos, length, width) {
     ctx.rotate(-pos);
 }
 </script>
-		   <script>
-  function statusChangeCallback(response) {  
-    console.log('statusChangeCallback');
-    console.log(response);                  
-    if (response.status === 'connected') {   
-      testAPI();  
-    } else {                                 
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this webpage.';
-    }
-  }
-  function checkLoginState() {             
-    FB.getLoginStatus(function(response) {  
-      statusChangeCallback(response);
-    });
-  }
+		   
+<script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '{830880894485671}',
-      cookie     : true,                    
-      xfbml      : true,                  
-      version    : '{v11.0}'           
+      cookie     : true,
+      xfbml      : true,
+      version    : '{v11.0}'
     });
-    FB.getLoginStatus(function(response) {  
-      statusChangeCallback(response);        
-    });
+      
+    FB.AppEvents.logPageView();   
+      
   };
-  function testAPI() {               
-    console.log('Chào Mừng Bạn Đã Đăng Nhập Facebook với web');
-    FB.api('/me', function(response) {
-      console.log('Đã Đăng Nhập Với: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Bạn Đã Đăng Nhập Với, ' + response.name + '!';
-    });
-  }
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+	
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+	
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+	
 </script>
+		   
   <script>
 var thang = new Array();
   thang[0] = "Một";
@@ -237,9 +234,6 @@ var thang = new Array();
       Sinh Ngày 12/7/2008
     </h2>
     </div><div>
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-	   <div id="status"></div>
 </div>
     <div><p id="time"></p></div>
     <script>
@@ -340,6 +334,11 @@ var thang = new Array();
     <div>
       <strong> Trang được viết bởi Ng Th Hải </strong>
     </div>
+	    
+<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
     <p>update day 20/7/2021</p>
 <p id="vikinhdo"></p>
 	    <script>
