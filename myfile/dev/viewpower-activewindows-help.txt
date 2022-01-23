@@ -1,8 +1,18 @@
 Debug Windows 10 Active Developed By: NGUYEN THANH HAI
 
 BẠN GẶP SỰ CỐ?
-1. 
-2.
-3.
-4.
-5.
+1. Lỗi Không Thể Active (Không Hỗ Trợ,Failed To Actived)
+FIX: Nên mua key chính hãng
+
+2. Lỗi Không Vào Được ActiveWindows
+FIX: Vui Lòng: tắt trình quét virus, và cài lại ứng dụng hoặc repair lại file activewindows10
+
+3. Lỗi key không nhận
+FIX: Vui lòng thực hiện FIX 1: Nên mua key chính hãng
+
+4. Lỗi mất file 
+FIX: Vui Lòng: tắt trình quét virus, Cài lại ứng dụng hoặc sử dụng file: atvw.cmd (chạy với quyền quản trị)
+
+5. Khuyến Khích Sử Dụng KEY chính hãng vì nếu sử dụng phương pháp này có thể làm hư máy !!!!!!!
+
+Enter để về màn hình chính
