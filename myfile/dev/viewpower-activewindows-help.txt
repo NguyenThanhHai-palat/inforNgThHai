@@ -1,4 +1,4 @@
-Debug Windows 10 Active Developed By: NGUYEN THANH HAI
+Debug Windows 10 Active Developed By: NGUYEN THANH HAI-PALATDEV
 
 BẠN GẶP SỰ CỐ?
 1. Lỗi Không Thể Active (Không Hỗ Trợ,Failed To Actived)
