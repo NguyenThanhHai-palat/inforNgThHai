@@ -53,16 +53,16 @@
 
  # Credits-ENG:                                                                                    
                                                                                                
- s1ave77       - Original Author of Digital License Generation without KMS or predecessor      
+ s1ave77        - Original Author of Digital License Generation without KMS or predecessor      
                  install/upgrade                                                               
                                                                                                
- mephistooo2   - Repacking s1ave77's earlier cmd version in 'KMS-Digital-Activation_Suite'     
+ mephistooo2    - Repacking s1ave77's earlier cmd version in 'KMS-Digital-Activation_Suite'     
                                                                                                
- WindowsAddict - Repacking mephistooo2's Repack to make a clean, separate, and improved        
+ WindowsAddict  - Repacking mephistooo2's Repack to make a clean, separate, and improved        
                  W10 Digital License Activation Script                                         
                                                                                                
- rpo           - Providing Great support in correction and improvements in this script       
- NguyenThanhHai- Edit again and translate to Vietnamese without accents   
+ rpo            - Providing Great support in correction and improvements in this script       
+ NguyenThanhHai - Edit again and translate to Vietnamese without accents   
                                                                                                
  ===============================================================================================
  
@@ -72,4 +72,4 @@
  https://www.nsaneforums.com/topic/316668-w10-digital-license-activation-script/  
  
  ===============================================================================================
- 
+ Nhấn Enter để về màn hình chính!
