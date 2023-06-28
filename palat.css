@@ -10065,8 +10065,7 @@ button.bg-dark:focus {
   animation: anitextheeaad 8s infinite;
 }
 .infotext{
-  
-  color: black;
+  color: white;
   text-shadow: 2px 2px #A4A4A4;
   
   
@@ -10077,16 +10076,79 @@ button.bg-dark:focus {
   50% {color: white;}
   100% {color: black;}
  }
- .container {
+.containercontent{
+  display: flex;
+  justify-content: space-between;
+}
+ .container1 {
  height: 580px;
+   width:25%;
+  box-shadow: 0px 5px 12px 5px;
+ border-style: outset;
+  border: 2px blue;
+  border-radius: 12px;
+   flex-direction: column;
+  padding: 5px;
+  
+  background-color : rgba(0,0,0, .7);
+ }
+ .container1b {
+ height: 25%;
+   width:100%;
+ border-style: outset;
+  border: 2px blue;
+  border-radius: 12px;
+  padding: 5px;
+  background-color : rgba(0,0,0, .4);
+ }
+.container2 {
+ height: 580px;
+  width:75%;
   box-shadow: 0px 5px 12px 5px;
  border-style: outset;
   border: 2px blue;
   border-radius: 12px;
   padding: 5px;
   
-  background-color : rgba(255, 255, 255, .5);;
+  background-color : rgba(255, 255, 255, .5);
  }
+.container3 {
+ height: 980px;
+  box-shadow: 0px 5px 12px 5px black;
+ border-style: outset;
+  border: 2px blue;
+  border-radius: 12px;
+  padding: 5px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color : rgba(134,134,134, .7);
+
+ }
+.container4 {
+ height: 150px;
+  width:100%;
+  box-shadow: 0px 5px 12px 5px black;
+ border-style: outset;
+  border: 2px blue;
+  border-radius: 12px;
+  padding: 5px;
+  background-color : rgba(255,255,255, .7);
+ }
+.linker4{
+  color:black;
+  background-color: #33FFFF;
+  text-decoration: none;
+  padding: 14px 25px;
+  text-align: center;
+  display: inline-block;
+  
+}
+.linker4:hover{
+  color:black;
+  background-color: #00CC66;
+  text-decoration: none;
+}
 body {
   background-image: url("https://github.com/NguyenThanhHai-palat/inforNgThHai/raw/main/myfile/Fl3-knGaYAAjxjY.jpg");
   background-repeat: no-repeat;
@@ -10366,5 +10428,4 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
-
 
