@@ -34,7 +34,7 @@ Tự ngắt dòng
         selectedValueDiv.textContent = "Quét mã QR này trong ứng dụng Ví MOMO:";
         document.getElementById("qrscan").innerHTML = '<img id="qrcode" src="" alt="QR Code SCAN">';
         var qrcode = document.getElementById('qrcode');
-        qrcode.src = 'https://chart.googleapis.com/chart?cht=qr&chl=2|99|0904548361|Nguyen Thanh Hai||0|0|' + selectedValue + '|Đã Thanh Toán Bằng Mã QR Qua Ví MOMO|transfer_myqr&chs=250x250&choe=UTF-8&chld=L|2';
+        qrcode.src = 'https://chart.googleapis.com/chart?cht=qr&chl=2|99|0904548361|Nguyen Thanh Hai||0|0|' + selectedValue + '|Đã Thanh Toán Bằng Mã QR Qua Ví MOMO|transfer_myqr&chs=250x250&choe=UTF-8&chco=A50064&chld=L|0&chdlp=b&chdls=H|h';
       } else {
         selectedValueDiv.textContent = 'Vui lòng chọn giá tiền để thanh toán';
       }
