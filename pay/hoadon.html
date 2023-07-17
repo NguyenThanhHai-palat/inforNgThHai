@@ -28,7 +28,6 @@
     <option value="1.000.000đ">1.000.000VNĐ</option>
   </select><br>
 <button style="padding:10px 10px;font-size: 18px;" onclick="createCanvasText()">Tạo Hóa Đơn</button>
-
 <div style="width: 10%">
   <canvas id="cs" width="400px" height="600px" style="border:1px solid #d3d3d3;">TRÌNH DUYỆT KHÔNG HỖ TRỢ</canvas>
 </div>
@@ -60,9 +59,10 @@
     s = "0" + s;
   }
   var timereal = h + ":" + m + ":" + s;
-  
+  var cas= "0";
    var canvas = document.getElementById("cs");
   var ctx = canvas.getContext("2d");
+
   function createCanvasText() {
     var valueSelect = document.getElementById('valueSelect');
     var selectedValue = valueSelect.value;
@@ -111,10 +111,23 @@
     } else {
       orderCode = selectedValueG + "-" + textInput1;
     }
+    
     ctx.font = "22px Arial";
     ctx.fillText(orderCode, 260, 360); 
 	ctx.fillText("NGƯỜI NHẬN:", 10, 440); 
     ctx.fillStyle = "blue";
     ctx.fillText(textInputxd, 170, 440);
+     var image = canvas.toDataURL();
+     var downloadLink = document.createElement('a');
+    downloadLink.href = image;
+    downloadLink.download = 'hoadon.png';
+    downloadLink.textContent = 'Tải xuống hóa đơn';
+   
+    var container = document.getElementById('download-container');
+    container.innerHTML = '';
+    container.appendChild(downloadLink);
   }
 </script>
+<div id="download-container">
+
+</div>
