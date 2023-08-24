@@ -1,7 +1,7 @@
 
 /*!
  * Palat 
- */
+*/
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -10153,7 +10153,7 @@ body {
   background-attachment: fixed;
   background-position: center top;
   position: relative;
-  background-size: 100%;
+  background-size: 70%;
  }
 @media (min-width: 576px) {
   .text-sm-left {
