@@ -1,9 +1,5 @@
 
 /*!
- * Bootstrap v4.6.2 (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * Palat 
  */
 :root {
@@ -10155,8 +10151,9 @@ body {
   background-image: url("https://github.com/NguyenThanhHai-palat/inforNgThHai/raw/main/myfile/z4628789070679_34e935b038f5fbe48c7069b0aaaa7227.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center;
-  background-size: 200%;
+  background-position: center top;
+  position: relative;
+  background-size: 100%;
  }
 @media (min-width: 576px) {
   .text-sm-left {
