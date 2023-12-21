@@ -1,4 +1,6 @@
 {
+  "help":"Nhập mã hoá đơn: ví dụ[w10up-0001]", 
+  "inf":"Kiểm tra mã hoá đơn do PALAT_DEV phát triển và vận hành nhằm mục đích thanh toán nhanh gọn đồng thời Palat Payment Service (PPS) cũng sẽ là trung gian để nạp game hay chuyển tiền mặt vào tài khoản ngân hàng hoặc ngược lại. •PalatPayment",
   "w10up-0001":"đã thanh toán!|20.000VNĐ|COD",
   "w10up-1001":"chưa thanh toán!|10.000VNĐ|COD",
   "ng-0093":"chưa thanh toán!|10.000VNĐ|COD",
