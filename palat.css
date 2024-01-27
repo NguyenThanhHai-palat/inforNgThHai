@@ -867,6 +867,19 @@ section {
   fill: #47aeff;
 }
 
+.services .iconbox-blue2 i {
+  color: #0000ff;
+}
+
+.services .iconbox-blue2:hover .icon i {
+  color: #fff;
+}
+
+.services .iconbox-blue2:hover .icon path {
+  fill: #0000ff;
+}
+
+
 .services .iconbox-orange i {
   color: #ffa76e;
 }
