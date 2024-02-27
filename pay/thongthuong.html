@@ -127,7 +127,7 @@
                      <script>
                         function kiemTraMa() {
                           var maNhap = document.getElementById("maNhap").value;
-                          fetch('https://palat001.cf/pay/hoadon.json')
+                          fetch('https://palat.io.vn/pay/hoadon.json')
                             .then(response => response.json())
                             .then(data => {
                               if (data[maNhap] !== undefined) {
