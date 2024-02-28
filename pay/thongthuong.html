@@ -119,74 +119,75 @@
                <div id="HTML_CODE7" class='ladi-element'>
                   <div class='ladi-html-code'>
                          <form id="invoiceForm">
-                             <label for="invoiceId">Nhập mã hóa đơn:</label><br>
-                             <input style="padding:10px 10px;font-size: 11px;border-collapse: separate;border-color: coral;" type="text" id="invoiceId" name="invoiceId"><br><br>
-                             <button style="padding:10px 20px;font-size: 18px;border-collapse: separate;border-color: coral;" type="submit">Kiểm tra</button>
-                         </form>
-                     
-                         <div id="invoiceDetails" style="margin-top: 20px;"></div>
-                     <div id="2invoiceDetails" style="margin-top: 20px;"></div>
-                         <script>
-                             document.getElementById('invoiceForm').addEventListener('submit', function(event) {
-                                 event.preventDefault();
-                                 const invoiceId = document.getElementById('invoiceId').value;
-                     
-                                 fetch('https://payment-palat.glitch.me/data.json')
-                                     .then(response => response.text())
-                                     .then(data => {
-                                         const lines = data.trim().split('\n');
-                                         let found = false;
-                                         lines.forEach(line => {
-                                             try {
-                                                 const obj = JSON.parse(line);
-                                                 if (obj.mahoadon === invoiceId) {
-                                                     const details = obj.details;
-                                                     const invoiceDetailsDiv = document.getElementById('invoiceDetails');
-                                                     invoiceDetailsDiv.innerHTML = ''; // Xóa nội dung cũ trước khi thêm mới
-                                                     const header = document.createElement('h3');
-                                                     header.textContent = 'Thông tin hóa đơn - Mã: ' + obj.mahoadon;
-                                                     invoiceDetailsDiv.appendChild(header);
-                                                     const ul = document.createElement('ul');
-                                                     details.forEach(detail => {
-                                                         const li = document.createElement('li');
-                                                         li.textContent = 'Số tiền: ' + detail.sotien + ' | Người nhận: ' + detail.nguoinhan;
-                                                         ul.appendChild(li);
-                                                     });
-                                                     invoiceDetailsDiv.appendChild(ul);
-                                                     found = true;
-                                                 }
-                                             } catch (error) {
-                                                 console.error('Có lỗi xảy ra khi xử lý dòng:', line, '| Lỗi:', error);
+                                   <label style="padding:10px 20px;font-size: 18px;"  for="invoiceId">Nhập mã hóa đơn:</label><br>
+                                   <input style="padding:10px 10px;font-size: 11px;border-collapse: separate;border-color: coral;" type="text" id="invoiceId" name="invoiceId"><br><br>
+                                   <button style="padding:10px 20px;font-size: 18px;border-collapse: separate;border-color: coral;" type="submit">Kiểm tra</button>
+                               </form>
+                           
+                               <div id="invoiceDetails" style="margin-top: 20px;font-size: 18px"></div>
+                              <div id="cinvoiceDetails" style="margin-top: 20px;font-size: 18px"></div>
+                               <script>
+                                   document.getElementById('invoiceForm').addEventListener('submit', function(event) {
+                                       event.preventDefault();
+                                       const invoiceId = document.getElementById('invoiceId').value;
+                           
+                                       fetch('https://payment-palat.glitch.me/data.json')
+                                           .then(response => response.text())
+                                           .then(data => {
+                                               const lines = data.trim().split('\n');
+                                               let found = false;
+                                               lines.forEach(line => {
+                                                   try {
+                                                       const obj = JSON.parse(line);
+                                                       if (obj.mahoadon === invoiceId) {
+                                                           const details = obj.details;
+                                                           const invoiceDetailsDiv = document.getElementById('invoiceDetails');
+                                                           invoiceDetailsDiv.innerHTML = ''; // Xóa nội dung cũ trước khi thêm mới
+                                                           const header = document.createElement('h3');
+                                                           header.textContent = 'Thông tin hóa đơn - Mã: ' + obj.mahoadon;
+                                                           invoiceDetailsDiv.appendChild(header);
+                                                           const ul = document.createElement('ul');
+                                                           details.forEach(detail => {
+                                                               const li = document.createElement('li');
+                                                               li.textContent = 'Số tiền: ' + detail.sotien + ' | Tên: ' + detail.nguoinhan;
+                                                               ul.appendChild(li);
+                                                           });
+                                                           invoiceDetailsDiv.appendChild(ul);
+                                                           found = true;
+                                                       }
+                                                   } catch (error) {
+                                                       console.error('Có lỗi xảy ra khi xử lý dòng:', line, '| Lỗi:', error);
+                                                   }
+                                               });
+                                               if (!found) {
+                                                   const invoiceDetailsDiv = document.getElementById('invoiceDetails');
+                                                   invoiceDetailsDiv.innerHTML = 'Không tìm thấy mã hóa đơn trong dữ liệu.';
+                                               }
+                                           })
+                                           .catch(error => {
+                                               console.error('Có lỗi xảy ra khi lấy dữ liệu từ server:', error);
+                                           });
+                           
+                                       fetch('https://palat.io.vn/pay/hoadon.json')
+                                         .then(response => response.json())
+                                         .then(data => {
+                                             const status = data[invoiceId];
+                                             if (status !== undefined) {
+                                                 const statusText = status === "true" ? "đã thanh toán" : "chưa thanh toán";
+                                                 
+                                                 document.getElementById("cinvoiceDetails").innerHTML = 'Trạng thái: ' + statusText;
+                                
+                                                 
+                                             } else {
+                                                 console.error('Không tìm thấy mã hóa đơn trong dữ liệu hóa đơn.');
                                              }
+                                         })
+                                         .catch(error => {
+                                             console.error('Có lỗi xảy ra khi lấy dữ liệu trạng thái từ server:', error);
                                          });
-                                         if (!found) {
-                                             const invoiceDetailsDiv = document.getElementById('invoiceDetails');
-                                             invoiceDetailsDiv.innerHTML = 'Không tìm thấy mã hóa đơn trong dữ liệu.';
-                                         }
-                                     })
-                                     .catch(error => {
-                                         console.error('Có lỗi xảy ra khi lấy dữ liệu từ server:', error);
-                                     });
-                     
-                                 fetch('https://palat.io.vn/pay/hoadon.json')
-                                   .then(response => response.json())
-                                   .then(data => {
-                                       const status = data[invoiceId];
-                                       if (status !== undefined) {
-                                           const statusText = status === "true" ? "đã thanh toán" : "chưa thanh toán";
-                                           const statusDiv = document.createElement('div');
-                                           statusDiv.textContent = 'Trạng thái: ' + statusText;
-                                           document.getElementById('2invoiceDetails').appendChild(statusDiv);
-                                       } else {
-                                           console.error('Không tìm thấy mã hóa đơn trong dữ liệu hóa đơn.');
-                                       }
-                                   })
-                                   .catch(error => {
-                                       console.error('Có lỗi xảy ra khi lấy dữ liệu trạng thái từ server:', error);
+                           
                                    });
-                     
-                             });
-                         </script>
+                               </script>
                   </div>
                </div>
                <div id="BOX5" class='ladi-element'>
