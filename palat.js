@@ -1,9 +1,9 @@
 /**
-* Template Name: MyResume
-* Updated: Nov 17 2023 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
+* Template Name: PALAT_STYLE
+* Updated: Jan 2 2024 with Bootstrap v5.3.2
+* Template URL: https://palat.io.vn
 * Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+* /
 */
 (function() {
   "use strict";
@@ -268,3 +268,18 @@
   new PureCounter();
 
 })()
+document.addEventListener("DOMContentLoaded", function() {
+  // List of possible image URLs
+  const imageUrls = [
+    "url('/images/image1.jpg')",
+    "url('/images/image2.jpg')",
+    "url('/images/image3.jpg')",
+    // Add more image URLs as needed
+  ];
+
+  // Choose a random image URL
+  const randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+
+  // Set the CSS variable to the chosen image URL
+  document.documentElement.style.setProperty('--bg-url', randomImageUrl);
+});
