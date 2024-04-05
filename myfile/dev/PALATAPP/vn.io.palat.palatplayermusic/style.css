@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #d1d8e0;
+}
+
+.audio-player {
+    text-align: center;
+}
+
+#audio {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+#volume {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+#play-btn {
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    outline: none;
+}
+
+#play-btn:hover {
+    background-color: #4834d4;
+}
