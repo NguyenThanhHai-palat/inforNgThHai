@@ -1,6 +1,17 @@
 const audio = document.getElementById('audio');
 const playBtn = document.getElementById('play-btn');
 const volumeRange = document.getElementById('volume');
+const loadBtn = document.getElementById('load-btn');
+const audioUrlInput = document.getElementById('audio-url');
+
+loadBtn.addEventListener('click', () => {
+    const audioUrl = audioUrlInput.value;
+    if (audioUrl.trim() !== '') {
+        audio.src = audioUrl;
+        audio.play();
+        playBtn.innerHTML = '&#10074;&#10074;';
+    }
+});
 
 playBtn.addEventListener('click', () => {
     if (audio.paused) {
