@@ -7,11 +7,12 @@
     <title>Nghe Nhạc</title>
     <link rel="stylesheet" href="style2.css">
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"><pre>PALAT PlayerMusic</pre></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -46,12 +47,57 @@
     </div>
   </div>
 </nav>
-<pre>PALAT PlayerMusic</pre>
 
-<audio controls>
-  <source src="/myfile/Thanh Niên Làm Theo Lời Bác.mp3" type="audio/mpeg">
-  Your browser does not support the audio tag.
-</audio>
 
+    
+    <audio id="audio" controls="" hidden>
+      <source src="https://palat.io.vn/myfile/Thanh Niên Làm Theo Lời Bác.mp3" type="audio/mpeg">
+      Your browser does not support the audio tag.
+    </audio>
+
+  <div class="audio-controls">
+    <button id="toggleButton" onclick = "toggleAudio()">Nghe</button>
+  </div>
+  <div class="audio-timeline" id="timeline">
+    <div class="audio-progress" id="progress"></div>
+  </div>
+
+
+<script>
+    const audio = document.getElementById('audio');
+    const toggleButton = document.getElementById('toggleButton');
+    let isPlaying = false;
+
+    function toggleAudio() {
+        if (isPlaying) {
+            audio.pause();
+            toggleButton.innerHTML = 'Tiếp tục';
+        } else {
+            audio.play();
+            toggleButton.innerHTML = 'Tạm dừng';
+        }
+        isPlaying = !isPlaying;
+    }
+
+    const timeline = document.getElementById('timeline');
+    const progress = document.getElementById('progress');
+
+    audio.addEventListener('timeupdate', () => {
+      const currentTime = audio.currentTime;
+      const duration = audio.duration;
+      const progressWidth = (currentTime / duration) * 100;
+      progress.style.width = `${progressWidth}%`;
+    });
+
+    timeline.addEventListener('click', (event) => {
+      const timelineWidth = timeline.offsetWidth;
+      const clickX = event.offsetX;
+      const duration = audio.duration;
+      const clickTime = (clickX / timelineWidth) * duration;
+      audio.currentTime = clickTime;
+    });
+  </script>
+
+    
 </body>
 </html>
