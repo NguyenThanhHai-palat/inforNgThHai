@@ -57,7 +57,7 @@
   const musicList = document.getElementById('musicList');
 
   // Lấy danh sách file nhạc từ JSON và hiển thị trên trang web
-  fetch('http://localhost:3000/music.json')
+  fetch('https://palatplayermusicdata.glitch.me/music.json')
     .then(response => response.json())
     .then(files => {
       files.forEach(file => {
