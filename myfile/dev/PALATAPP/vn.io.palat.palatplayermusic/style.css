@@ -38,3 +38,7 @@
       height: 100%;
       background-color: #007bff;
     }
+.audio-list {
+  max-height: 300px; 
+  overflow-y: auto; 
+}
