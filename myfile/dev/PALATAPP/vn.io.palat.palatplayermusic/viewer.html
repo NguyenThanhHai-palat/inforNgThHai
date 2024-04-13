@@ -1,12 +1,9 @@
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nghe Nhạc</title>
-    <link rel="stylesheet" href="style2.css">
-    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -44,56 +41,68 @@
   </div>
 </nav>
 
+<div class="audio-list">
+  <h2>Danh sách Nhạc</h2>
+  <ul id="musicList"></ul>
+</div>
 
-    
-    <audio id="audio" controls="" hidden>
-      <source src="https://palat.io.vn/myfile/Thanh Niên Làm Theo Lời Bác.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-    </audio>
-
-  <div class="audio-controls">
-    <button id="toggleButton" onclick = "toggleAudio()">Nghe</button>
-  </div>
-  <div class="audio-timeline" id="timeline">
-    <div class="audio-progress" id="progress"></div>
-  </div>
-
+<audio id="audio" controls hidden>
+  Your browser does not support the audio tag.
+</audio>
 
 <script>
-    const audio = document.getElementById('audio');
-    const toggleButton = document.getElementById('toggleButton');
-    let isPlaying = false;
+  const audio = document.getElementById('audio');
+  const musicList = document.getElementById('musicList');
 
-    function toggleAudio() {
-        if (isPlaying) {
-            audio.pause();
-            toggleButton.innerHTML = 'Tiếp tục';
-        } else {
-            audio.play();
-            toggleButton.innerHTML = 'Tạm dừng';
-        }
-        isPlaying = !isPlaying;
+  // Lấy danh sách file nhạc từ JSON và hiển thị trên trang web
+  fetch('http://localhost:3000/music.json')
+    .then(response => response.json())
+    .then(files => {
+      files.forEach(file => {
+        const listItem = document.createElement('li');
+        listItem.textContent = file;
+        listItem.addEventListener('click', () => playMusic(file));
+        musicList.appendChild(listItem);
+      });
+    });
+
+
+  function playMusic(fileName) {
+    audio.src = `https://palatplayermusicdata.glitch.me/play/${fileName}`;
+    audio.play();
+  }
+
+  const toggleButton = document.getElementById('toggleButton');
+  let isPlaying = false;
+
+  function toggleAudio() {
+    if (isPlaying) {
+        audio.pause();
+        toggleButton.innerHTML = 'Tiếp tục';
+    } else {
+        audio.play();
+        toggleButton.innerHTML = 'Tạm dừng';
     }
+    isPlaying = !isPlaying;
+  }
 
-    const timeline = document.getElementById('timeline');
-    const progress = document.getElementById('progress');
+  const timeline = document.getElementById('timeline');
+  const progress = document.getElementById('progress');
 
-    audio.addEventListener('timeupdate', () => {
-      const currentTime = audio.currentTime;
-      const duration = audio.duration;
-      const progressWidth = (currentTime / duration) * 100;
-      progress.style.width = `${progressWidth}%`;
-    });
+  audio.addEventListener('timeupdate', () => {
+    const currentTime = audio.currentTime;
+    const duration = audio.duration;
+    const progressWidth = (currentTime / duration) * 100;
+    progress.style.width = `${progressWidth}%`;
+  });
 
-    timeline.addEventListener('click', (event) => {
-      const timelineWidth = timeline.offsetWidth;
-      const clickX = event.offsetX;
-      const duration = audio.duration;
-      const clickTime = (clickX / timelineWidth) * duration;
-      audio.currentTime = clickTime;
-    });
-  </script>
-
-    
+  timeline.addEventListener('click', (event) => {
+    const timelineWidth = timeline.offsetWidth;
+    const clickX = event.offsetX;
+    const duration = audio.duration;
+    const clickTime = (clickX / timelineWidth) * duration;
+    audio.currentTime = clickTime;
+  });
+</script>
 </body>
 </html>
