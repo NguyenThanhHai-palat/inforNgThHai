@@ -48,13 +48,23 @@
   <ul id="musicList"></ul>
 </div>
 
-<audio id="audio" controls hidden>
-  Your browser does not support the audio tag.
-</audio>
 
+    <audio id="audio" controls="" hidden>
+
+    </audio>
+
+  <div class="audio-controls">
+    <button id="toggleButton" onclick = "toggleAudio()">Nghe</button>
+  </div>
+  <div class="audio-timeline" id="timeline">
+    <div class="audio-progress" id="progress"></div>
+  </div>
+    
 <script>
-  const audio = document.getElementById('audio');
+   const audio = document.getElementById('audio');
   const musicList = document.getElementById('musicList');
+  const toggleButton = document.getElementById('toggleButton');
+  let isPlaying = false;
 
   // Lấy danh sách file nhạc từ JSON và hiển thị trên trang web
   fetch('https://palatplayermusicdata.glitch.me/music.json')
@@ -68,15 +78,15 @@
       });
     });
 
-
+  // Chạy file nhạc khi người dùng chọn một file từ danh sách
   function playMusic(fileName) {
     audio.src = `https://palatplayermusicdata.glitch.me/play/${fileName}`;
     audio.play();
+    isPlaying = true;
+    toggleButton.innerHTML = 'Tạm dừng';
   }
 
-  const toggleButton = document.getElementById('toggleButton');
-  let isPlaying = false;
-
+  // Chức năng tạm dừng/tiếp tục phát nhạc
   function toggleAudio() {
     if (isPlaying) {
         audio.pause();
@@ -91,6 +101,7 @@
   const timeline = document.getElementById('timeline');
   const progress = document.getElementById('progress');
 
+  // Cập nhật thanh tiến trình khi phát nhạc
   audio.addEventListener('timeupdate', () => {
     const currentTime = audio.currentTime;
     const duration = audio.duration;
@@ -98,6 +109,7 @@
     progress.style.width = `${progressWidth}%`;
   });
 
+  // Chạy đến vị trí được chọn trên thanh tiến trình
   timeline.addEventListener('click', (event) => {
     const timelineWidth = timeline.offsetWidth;
     const clickX = event.offsetX;
