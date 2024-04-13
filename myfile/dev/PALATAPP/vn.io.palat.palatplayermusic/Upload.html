@@ -1,5 +1,3 @@
-
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,5 +42,37 @@
   </div>
 </nav>
 
+ <form action="https://palatplayermusicdata.glitch.me/upload" method="post" enctype="multipart/form-data">
+        <input  class="form-control" type="file" name="mp3file" id="mp3file">
+        <button class="btn btn-primary" type="submit">TẢI LÊN</button>
+    </form>
+<script>
+
+const fileInput = document.getElementById('mp3file');
+
+fileInput.addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append('mp3file', file);
+
+  fetch('https://palatplayermusicdata.glitch.me/upload', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to upload file');
+    }
+    console.log('File uploaded successfully');
+  })
+  .catch(error => {
+    console.error('Error uploading file:', error);
+  });
+});
+
+</script>
+    
 </body>
 </html>
