@@ -7,29 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
     <script src="script.js"></script>
-    <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBvMiwVttPa5U7IgIratxY3dkQWfoGhLgs",
-    authDomain: "palat-music-player-8376.firebaseapp.com",
-    projectId: "palat-music-player-8376",
-    storageBucket: "palat-music-player-8376.appspot.com",
-    messagingSenderId: "404515987076",
-    appId: "1:404515987076:web:bacc33096ca50998d6acd1",
-    measurementId: "G-FLVM9867WF"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+    
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -140,6 +118,32 @@
     const clickTime = (clickX / timelineWidth) * duration;
     audio.currentTime = clickTime;
   });
+</script>
+
+
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBvMiwVttPa5U7IgIratxY3dkQWfoGhLgs",
+    authDomain: "palat-music-player-8376.firebaseapp.com",
+    projectId: "palat-music-player-8376",
+    storageBucket: "palat-music-player-8376.appspot.com",
+    messagingSenderId: "404515987076",
+    appId: "1:404515987076:web:bacc33096ca50998d6acd1",
+    measurementId: "G-FLVM9867WF"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 </script>
 </body>
 </html>
