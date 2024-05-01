@@ -1,12 +1,14 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vn">
 <head>
 <meta charset="utf-8">
 <title>Error</title>
 </head>
 <body>
-<pre>Cannot GET /</pre>
+<p id="path_error"></p>
 <pre>404</pre>
+<script>
+document.getElementById("path_error").innerHTML="<pre>Cannot GET "+window.location.pathname+"</pre>";
+</script>
 </body>
 </html>
