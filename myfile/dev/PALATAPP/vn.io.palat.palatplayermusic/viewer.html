@@ -45,6 +45,7 @@
 </nav>
 
 <div class="audio-list">
+ <h1>Nhạc Online</h1>
   <h2>Danh sách Nhạc</h2>
   <ul class="list-group" id="musicList"></ul>
 </div>
@@ -60,7 +61,97 @@
   <div class="audio-timeline" id="timeline">
     <div class="audio-progress" id="progress"></div>
   </div>
-    
+  
+ <h1>Nhạc trên thiết bị</h1>
+ 
+<input type="file" id="song-file" accept="audio/*">
+    <button onclick="addSong()">Add Song</button>
+    <button onclick="createPlaylist()">Create Playlist</button>
+
+    <h2>Playlist</h2>
+    <ul id="playlist"></ul>
+
+    <audio id="audio-player" controls>
+
+    </audio>
+
+ 
+ <script>
+function getCookie(name) {
+    let cookieArr = document.cookie.split(";");
+    for(let i = 0; i < cookieArr.length; i++) {
+        let cookiePair = cookieArr[i].split("=");
+        if(name == cookiePair[0].trim()) {
+            return decodeURIComponent(cookiePair[1]);
+        }
+    }
+    return null;
+}
+
+// Function to set cookie
+function setCookie(name, value, days) {
+    let date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+}
+
+// Function to add song to playlist
+function addSong() {
+    const songFileInput = document.getElementById('song-file');
+    const file = songFileInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const songUrl = e.target.result;
+            const playlist = document.getElementById('playlist');
+            const li = document.createElement('li');
+            li.textContent = file.name;
+            li.onclick = function() {
+                document.getElementById('audio-player').src = songUrl;
+            };
+            playlist.appendChild(li);
+
+            // Save to cookie
+            let currentPlaylist = getCookie('playlist');
+            if (currentPlaylist) {
+                currentPlaylist = JSON.parse(currentPlaylist);
+            } else {
+                currentPlaylist = [];
+            }
+            currentPlaylist.push({name: file.name, url: songUrl});
+            setCookie('playlist', JSON.stringify(currentPlaylist), 7);
+
+            songFileInput.value = '';
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+// Function to create playlist from cookie
+function createPlaylist() {
+    const playlist = document.getElementById('playlist');
+    playlist.innerHTML = ''; // Clear current playlist
+    let currentPlaylist = getCookie('playlist');
+    if (currentPlaylist) {
+        currentPlaylist = JSON.parse(currentPlaylist);
+        currentPlaylist.forEach(function(song) {
+            const li = document.createElement('li');
+            li.textContent = song.name;
+            li.onclick = function() {
+                document.getElementById('audio-player').src = song.url;
+            };
+            playlist.appendChild(li);
+        });
+    }
+}
+
+window.onload = function() {
+    createPlaylist();
+};
+
+ 
+ </script>
 <script>
    const audio = document.getElementById('audio');
   const musicList = document.getElementById('musicList');
