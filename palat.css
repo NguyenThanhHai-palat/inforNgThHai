@@ -880,6 +880,22 @@ section {
 }
 
 
+
+.services .iconbox-mpa i {
+  color: ##4255ff;
+}
+
+.services .iconbox-mpa:hover .icon i {
+  color: #fff;
+}
+
+.services .iconbox-mpa:hover .icon path {
+  fill: ##4255ff;
+}
+
+
+
+
 .services .iconbox-orange i {
   color: #ffa76e;
 }
