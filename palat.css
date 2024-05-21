@@ -882,7 +882,7 @@ section {
 
 
 .services .iconbox-mpa i {
-  color: ##4255ff;
+  color: #4255ff;
 }
 
 .services .iconbox-mpa:hover .icon i {
@@ -890,7 +890,7 @@ section {
 }
 
 .services .iconbox-mpa:hover .icon path {
-  fill: ##4255ff;
+  fill: #4255ff;
 }
 
 
