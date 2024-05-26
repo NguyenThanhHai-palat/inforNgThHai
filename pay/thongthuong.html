@@ -168,7 +168,7 @@
                                                console.error('Có lỗi xảy ra khi lấy dữ liệu từ server:', error);
                                            });
                            
-                                       fetch('https://palat.io.vn/pay/hoadon.json')
+                                       fetch('https://payment-palat.glitch.me/staus.json')
                                          .then(response => response.json())
                                          .then(data => {
                                              const status = data[invoiceId];
