@@ -1,149 +1,249 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Upload Form</title><meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body><p>Tên Sản Phẩm</p>
-    <input style="padding:10px 10px;font-size: 18px;" type="text" id="tensanpham" name="tensanpham" required> <br>
-  <form id="uploadForm" action="https://payment-palat.glitch.me/api/uploadDATA" method="post">
-    <p>Mã Hóa Đơn</p>
-    <input style="padding:10px 10px;font-size: 18px;" type="text" id="mahoadon" name="mahoadon" required> <br>
-    <p>Số Tiền</p>
-    <input style="padding:10px 10px;font-size: 18px;" type="text" id="sotien" name="sotien" required> <br>
-    <p>Người Nhận</p>
-    <input style="padding:10px 10px;font-size: 18px;" type="text" id="nguoinhan" name="nguoinhan" required> <br>
-    <button style="padding:10px 10px;font-size: 18px;" type="submit" onclick="createCanvasText()">Tải Lên</button>
-  </form>
-
-  <div style="width: 10%">
-    <canvas id="cs" width="400px" height="600px" style="border:1px solid #d3d3d3;">TRÌNH DUYỆT KHÔNG HỖ TRỢ</canvas>
-  </div>
-  <script>
-    document.getElementById("uploadForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      var formData = new FormData(this);
-
-      fetch(this.action, {
-        method: this.method,
-        body: formData
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text();
-      })
-      .then(data => {
-        alert('Data uploaded successfully');
-        console.log('Data uploaded:', data);
-      })
-      .catch(error => {
-        console.error('There was an error uploading the data:', error);
-        alert('An error occurred while uploading data. Please try again later.');
-      });
-    });
-  var img = new Image();
-img.src = 'https://palat.io.vn/myfile/PALATDEVLOGOapp.png';
-  var img2 = new Image();
-img2.src = 'https://palat.io.vn/pltapp.pay.png';
-var img3 = new Image();
-img3.src = 'https://palat.io.vn/logo_palatpayment.png';
-    function createCanvasText() {
-    
-    
-    
-       let timec = new Date();
-  var date = new Date();
-  var days = new Array(7);
-  days[0] = "Chủ Nhật";
-  days[1] = "Thứ Hai";
-  days[2] = "Thứ Ba";
-  days[3] = "Thứ Tư";
-  days[4] = "Thứ Năm";
-  days[5] = "Thứ Sáu";
-  days[6] = "Thứ Bảy";
-
-  var DaysG = days[timec.getDay()];
-  var DayG = timec.getDate();
-  var MonthG = timec.getMonth()+1;
-  var YearG = timec.getFullYear();
-  var fulldate = DaysG+", ngày "+DayG+" tháng "+MonthG + " năm "+YearG;
-    var date = new Date();
-  var h = date.getHours();
-  var m = date.getMinutes();
-  var s = date.getSeconds();
-  if (m < 10) {
-    m = "0" + m;
-  }
-  if (s < 10) {
-    s = "0" + s;
-  }
-  var timereal = h + ":" + m + ":" + s;
-  var cas= "0";
-
-      var textInput = document.getElementById("tensanpham").value;
-      var textInputMONEY = document.getElementById("sotien").value;
-      var textInputxd = document.getElementById("nguoinhan").value;
-      var textInput1 = document.getElementById("mahoadon").value;
-      var canvas = document.getElementById("cs");
-      var ctx = canvas.getContext("2d");
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      var randomNumber = Math.floor(Math.random() * 10000); 
-      
-      ctx.font = "18px Arial";
-      ctx.fillStyle = "lime";
-      ctx.fillText("PALAT_PAYMENT: HÓA ĐƠN THANH TOÁN", 10, 20);
-      ctx.fillStyle = "black";
-      ctx.font = "30px Arial";
-      ctx.fillText("HÓA ĐƠN THANH TOÁN", 20, 50);
-      ctx.moveTo(0, 60);
-      ctx.lineTo(400, 60);
-      ctx.strokeStyle = "blue";
-      ctx.lineWidth = 3;
-      ctx.stroke();
-      ctx.fillText("ĐƠN HÀNG", 100, 120);
-      ctx.font = "20px Arial";
-      ctx.fillText("SẢN PHẨM:", 10, 200);
-      ctx.fillStyle = "red";
-      ctx.font = "22px Arial";ctx.fillText(textInput, 50, 225);
-      ctx.moveTo(0, 230);
-      ctx.lineTo(400, 230);
-      ctx.strokeStyle = "black";
-      ctx.lineWidth = 3;
-      ctx.stroke();ctx.drawImage(img3, 270, 50, 124, 124);
-    ctx.drawImage(img2, 10, 500, 310, 72);
-    ctx.drawImage(img, 280, 500, 64, 64);
-      // Các dòng sau không có biến textInput được khai báo, tôi sửa thành textInput1 để sử dụng giá trị của mã hóa đơn nhập vào
-      ctx.fillStyle = "black";
-      ctx.fillText("TỔNG THÀNH TIỀN:", 10, 300);
-      ctx.fillStyle = "green";
-      ctx.font = "25px Arial";
-      ctx.fillText(textInputMONEY, 220, 300);
-      ctx.fillStyle = "black";
-      ctx.font = "22px Arial";
-      ctx.fillText("MÃ ĐƠN HÀNG:", 10, 360);ctx.font = "15px Arial";ctx.fillText(fulldate, 150, 470); 
-    ctx.fillText(timereal, 320, 485); 
-      ctx.font = "20px Arial";ctx.fillStyle = "blue";
-      ctx.fillText("DH-"+textInput1, 260, 360); 
-      ctx.fillStyle = "black";
-      ctx.fillText("NGƯỜI NHẬN:", 10, 440); 
-      ctx.fillStyle = "blue";
-      ctx.fillText(textInputxd, 170, 440);
-
-      var image = canvas.toDataURL();
-      var downloadLink = document.createElement('a');
-      downloadLink.href = image;
-      downloadLink.download = 'hoadon.png';
-      downloadLink.textContent = 'Tải xuống hóa đơn';
-     
-      var container = document.getElementById('download-container');
-      container.innerHTML = '';
-      container.appendChild(downloadLink);
-    }
-  </script>
-  <img src="/pay/QR.png" width="100%" height="auto">
-  <div id="download-container"></div>
-</body>
+   <head>
+      <title>Upload Form</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+   </head>
+   <body>
+      <p>Tên Sản Phẩm</p>
+      <input style="padding:10px 10px;font-size: 18px;" type="text" id="tensanpham" name="tensanpham" required> <br>
+      <form id="uploadForm" action="https://payment-palat.glitch.me/api/uploadDATA" method="post">
+         <p>Mã Hóa Đơn</p>
+         <input style="padding:10px 10px;font-size: 18px;" type="text" id="mahoadon" name="mahoadon" required> <br>
+         <p>Số Tiền</p>
+         <input style="padding:10px 10px;font-size: 18px;" type="text" id="sotien" name="sotien" required> <br>
+         <p>Người Nhận</p>
+         <input style="padding:10px 10px;font-size: 18px;" type="text" id="nguoinhan" name="nguoinhan" required> <br>
+         <button style="padding:10px 10px;font-size: 18px;" type="submit" onclick="createCanvasText()">Tải Lên</button>
+      </form>
+      <div style="width: 10%">
+         <canvas id="cs" width="400px" height="600px" style="border:1px solid #d3d3d3;">TRÌNH DUYỆT KHÔNG HỖ TRỢ</canvas>
+      </div>
+      <script>
+         document.getElementById("uploadForm").addEventListener("submit", function(event) {
+           event.preventDefault();
+           var formData = new FormData(this);
+         
+           fetch(this.action, {
+             method: this.method,
+             body: formData
+           })
+           .then(response => {
+             if (!response.ok) {
+               throw new Error('Network response was not ok');
+             }
+             return response.text();
+           })
+           .then(data => {
+             alert('Data uploaded successfully');
+             console.log('Data uploaded:', data);
+           })
+           .catch(error => {
+             console.error('There was an error uploading the data:', error);
+             alert('An error occurred while uploading data. Please try again later.');
+           });
+         });
+         var img = new Image();
+         img.src = 'https://palat.io.vn/myfile/PALATDEVLOGOapp.png';
+         var img2 = new Image();
+         img2.src = 'https://palat.io.vn/pltapp.pay.png';
+         var img3 = new Image();
+         img3.src = 'https://palat.io.vn/logo_palatpayment.png';
+         function createCanvasText() {
+         
+         
+         
+            let timec = new Date();
+         var date = new Date();
+         var days = new Array(7);
+         days[0] = "Chủ Nhật";
+         days[1] = "Thứ Hai";
+         days[2] = "Thứ Ba";
+         days[3] = "Thứ Tư";
+         days[4] = "Thứ Năm";
+         days[5] = "Thứ Sáu";
+         days[6] = "Thứ Bảy";
+         
+         var DaysG = days[timec.getDay()];
+         var DayG = timec.getDate();
+         var MonthG = timec.getMonth()+1;
+         var YearG = timec.getFullYear();
+         var fulldate = DaysG+", ngày "+DayG+" tháng "+MonthG + " năm "+YearG;
+         var date = new Date();
+         var h = date.getHours();
+         var m = date.getMinutes();
+         var s = date.getSeconds();
+         if (m < 10) {
+         m = "0" + m;
+         }
+         if (s < 10) {
+         s = "0" + s;
+         }
+         var timereal = h + ":" + m + ":" + s;
+         var cas= "0";
+         
+           var textInput = document.getElementById("tensanpham").value;
+           var textInputMONEY = document.getElementById("sotien").value;
+           var textInputxd = document.getElementById("nguoinhan").value;
+           var textInput1 = document.getElementById("mahoadon").value;
+           var canvas = document.getElementById("cs");
+           var ctx = canvas.getContext("2d");
+         
+           ctx.clearRect(0, 0, canvas.width, canvas.height);
+           
+           var randomNumber = Math.floor(Math.random() * 10000); 
+           
+           ctx.font = "18px Arial";
+           ctx.fillStyle = "lime";
+           ctx.fillText("PALAT_PAYMENT: HÓA ĐƠN THANH TOÁN", 10, 20);
+           ctx.fillStyle = "black";
+           ctx.font = "30px Arial";
+           ctx.fillText("HÓA ĐƠN THANH TOÁN", 20, 50);
+           ctx.moveTo(0, 60);
+           ctx.lineTo(400, 60);
+           ctx.strokeStyle = "blue";
+           ctx.lineWidth = 3;
+           ctx.stroke();
+           ctx.fillText("ĐƠN HÀNG", 100, 120);
+           ctx.font = "20px Arial";
+           ctx.fillText("SẢN PHẨM:", 10, 200);
+           ctx.fillStyle = "red";
+           ctx.font = "22px Arial";ctx.fillText(textInput, 50, 225);
+           ctx.moveTo(0, 230);
+           ctx.lineTo(400, 230);
+           ctx.strokeStyle = "black";
+           ctx.lineWidth = 3;
+           ctx.stroke();ctx.drawImage(img3, 270, 50, 124, 124);
+         ctx.drawImage(img2, 10, 500, 310, 72);
+         ctx.drawImage(img, 280, 500, 64, 64);
+           // Các dòng sau không có biến textInput được khai báo, tôi sửa thành textInput1 để sử dụng giá trị của mã hóa đơn nhập vào
+           ctx.fillStyle = "black";
+           ctx.fillText("TỔNG THÀNH TIỀN:", 10, 300);
+           ctx.fillStyle = "green";
+           ctx.font = "25px Arial";
+           ctx.fillText(textInputMONEY, 220, 300);
+           ctx.fillStyle = "black";
+           ctx.font = "22px Arial";
+           ctx.fillText("MÃ ĐƠN HÀNG:", 10, 360);ctx.font = "15px Arial";ctx.fillText(fulldate, 150, 470); 
+         ctx.fillText(timereal, 320, 485); 
+           ctx.font = "20px Arial";ctx.fillStyle = "blue";
+           ctx.fillText("DH-"+textInput1, 260, 360); 
+           ctx.fillStyle = "black";
+           ctx.fillText("NGƯỜI NHẬN:", 10, 440); 
+           ctx.fillStyle = "blue";
+           ctx.fillText(textInputxd, 170, 440);
+         
+           var image = canvas.toDataURL();
+           var downloadLink = document.createElement('a');
+           downloadLink.href = image;
+           downloadLink.download = 'hoadon.png';
+           downloadLink.textContent = 'Tải xuống hóa đơn';
+          
+           var container = document.getElementById('download-container');
+           container.innerHTML = '';
+           container.appendChild(downloadLink);
+         }
+      </script>
+      <div style="padding:10px 10px;font-size: 14px;border-collapse: separate;border-color: coral;" id="download-container"></div>
+      <form id="uploadForm2" action="https://payment-palat.glitch.me/api/updatemhd" method="post">
+         <label for="mahoadon">XÁC NHẬN ĐƠN:</label>
+         <input type="text" id="mahoadon" name="mahoadon" required>
+         <button type="submit">Xong</button>
+      </form>
+      <script>
+         document.getElementById("uploadForm2").addEventListener("submit", function(event) {
+              event.preventDefault();
+              var formData = new FormData(this);
+         
+              fetch(this.action, {
+                method: this.method,
+                body: formData
+              })
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                return response.text();
+              })
+              .then(data => {
+                alert('Data uploaded successfully');
+                console.log('Data uploaded:', data);
+              })
+              .catch(error => {
+                console.error('There was an error uploading the data:', error);
+                alert('An error occurred while uploading data. Please try again later.');
+              });
+            });
+      </script>
+      <form id="invoiceForm">
+         <label style="padding:10px 20px;font-size: 18px;" for="invoiceId">Nhập mã hóa đơn:</label><br>
+         <input style="padding:10px 10px;font-size: 11px;border-collapse: separate;border-color: coral;" type="text" id="invoiceId" name="invoiceId"><br><br>
+         <button style="padding:10px 20px;font-size: 18px;border-collapse: separate;border-color: coral;" type="submit">Kiểm tra</button>
+      </form>
+      <div id="invoiceDetails" style="margin-top: 20px;font-size: 18px"></div>
+      <div id="cinvoiceDetails" style="margin-top: 20px;font-size: 18px"></div>
+      <script>
+         document.getElementById('invoiceForm').addEventListener('submit', function(event) {
+             event.preventDefault();
+             const invoiceId = document.getElementById('invoiceId').value;
+         
+             fetch('https://payment-palat.glitch.me/data.json')
+                 .then(response => response.text())
+                 .then(data => {
+                     const lines = data.trim().split('\n');
+                     let found = false;
+                     lines.forEach(line => {
+                         try {
+                             const obj = JSON.parse(line);
+                             if (obj.mahoadon === invoiceId) {
+                                 const details = obj.details;
+                                 const invoiceDetailsDiv = document.getElementById('invoiceDetails');
+                                 invoiceDetailsDiv.innerHTML = ''; // Xóa nội dung cũ trước khi thêm mới
+                                 const header = document.createElement('h3');
+                                 header.textContent = 'Thông tin hóa đơn - Mã: ' + obj.mahoadon;
+                                 invoiceDetailsDiv.appendChild(header);
+                                 const ul = document.createElement('ul');
+                                 details.forEach(detail => {
+                                     const li = document.createElement('li');
+                                     li.textContent = 'Số tiền: ' + detail.sotien + ' | Tên: ' + detail.nguoinhan;
+                                     ul.appendChild(li);
+                                 });
+                                 invoiceDetailsDiv.appendChild(ul);
+                                 found = true;
+                             }
+                         } catch (error) {
+                             console.error('Có lỗi xảy ra khi xử lý dòng:', line, '| Lỗi:', error);
+                         }
+                     });
+                     if (!found) {
+                         const invoiceDetailsDiv = document.getElementById('invoiceDetails');
+                         invoiceDetailsDiv.innerHTML = 'Không tìm thấy mã hóa đơn trong dữ liệu.';
+                     }
+                 })
+                 .catch(error => {
+                     console.error('Có lỗi xảy ra khi lấy dữ liệu từ server:', error);
+                 });
+         
+             fetch('https://payment-palat.glitch.me/staus.json')
+               .then(response => response.json())
+               .then(data => {
+                   const status = data[invoiceId];
+                   if (status !== undefined) {
+                       const statusText = status === "true" ? "đã thanh toán" : "chưa thanh toán";
+                       
+                       document.getElementById("cinvoiceDetails").innerHTML = 'Trạng thái: ' + statusText;
+         
+                       
+                   } else {
+                       console.error('Không tìm thấy mã hóa đơn trong dữ liệu hóa đơn.');document.getElementById("cinvoiceDetails").innerHTML = 'Trạng thái: ' + "chưa thanh toán";
+                   }
+               })
+               .catch(error => {
+                   console.error('Có lỗi xảy ra khi lấy dữ liệu trạng thái từ server:', error);
+               });
+         
+         });
+      </script>
+      <img src="/pay/QR.png" width="100%" height="auto">
+   </body>
 </html>
