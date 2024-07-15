@@ -79,6 +79,7 @@
                                 .then(data => {
                                     const list = document.getElementById('listwait');
                                     data.forEach(gameName => {
+                                         window.open("https://minecraft.palat.io.vn/" ,"_self");
                                         const listItem = document.createElement('li');
                                         listItem.textContent = gameName;
                                         list.appendChild(listItem);
