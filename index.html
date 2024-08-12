@@ -63,7 +63,14 @@
     <!-- ======= About Section ======= -->
     <section id="b" class="about">
       <div class="container" data-aos="fade-up">
-           <audio controls id="audio" autoplay src="/myfile/YourName-Sparkle.mp3"> </audio>
+          <audio controls id="audiox" src="/myfile/YourName-Sparkle.mp3"></audio>
+
+    <script>
+        window.onload = function() {
+            var audio = document.getElementById('audiox');
+            audio.play();
+        };
+    </script>
         <div class="section-title">
           <h2>Thông tin thêm</h2>
         </div>
