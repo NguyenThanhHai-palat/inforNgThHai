@@ -66,13 +66,17 @@
          <audio controls id="audio" src="/myfile/YourName-Sparkle.mp3" autoplay></audio>
 
     <script>
-        document.addEventListener('click', function() {
+         function playAudio() {
             var audio = document.getElementById('audio');
-            audio.muted = false; // Bỏ chế độ im lặng
             audio.play().catch(function(error) {
                 console.log('Error playing audio:', error);
             });
-        });
+        }
+
+        // Play audio on user interaction
+        document.addEventListener('click', playAudio);
+        document.addEventListener('scroll', playAudio);
+        document.addEventListener('mousemove', playAudio);
     </script>
         <div class="section-title">
           <h2>Thông tin thêm</h2>
