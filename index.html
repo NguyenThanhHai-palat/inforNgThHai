@@ -63,13 +63,16 @@
     <!-- ======= About Section ======= -->
     <section id="b" class="about">
       <div class="container" data-aos="fade-up">
-          <audio controls id="audiox" src="/myfile/YourName-Sparkle.mp3"></audio>
+         <audio controls id="audio" src="/myfile/YourName-Sparkle.mp3" autoplay muted></audio>
 
     <script>
-        window.onload = function() {
-            var audio = document.getElementById('audiox');
-            audio.play();
-        };
+        document.addEventListener('click', function() {
+            var audio = document.getElementById('audio');
+            audio.muted = false; // Bỏ chế độ im lặng
+            audio.play().catch(function(error) {
+                console.log('Error playing audio:', error);
+            });
+        });
     </script>
         <div class="section-title">
           <h2>Thông tin thêm</h2>
