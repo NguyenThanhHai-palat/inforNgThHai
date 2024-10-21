@@ -302,7 +302,7 @@
       <script src="/vendor/typed.js/typed.umd.js"></script>
       <script src="/vendor/waypoints/noframework.waypoints.js"></script>
       <script src="/vendor/php-email-form/validate.js"></script>
-      <script>function changeBackground() {const currentHour = new Date().getHours();const background = document.getElementById('a');if (currentHour >= 6 && currentHour < 18) {background.className = 'day';} else {background.className = 'night';}}changeBackground();</script>
+      <script>function changeBackground() {const currentHour = new Date().getHours();const background = document.getElementById('a');if (currentHour >= 6 && currentHour < 18) {background.classList.add('day');background.classList.remove('night');} else {background.classList.add('night');background.classList.remove('day');}}changeBackground();</script>
       <script src="/palat.js"></script>
    </body>
 </html>
