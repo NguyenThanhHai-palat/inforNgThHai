@@ -276,7 +276,6 @@ h6 {
   height: 100vh;
   background-size: cover;
   position: relative;
-  transition: background-image 0.5s ease-in-out;
 }
 .day {background-image: url('/myfile/day_view.jpg');}
 .night {background-image: url('/myfile/night_view.jpg')};
