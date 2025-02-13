@@ -275,7 +275,6 @@ function load_content(data){
   /**
    * Initiate Pure Counter 
    */
-  new PureCounter();
 
 })()
 document.addEventListener("DOMContentLoaded", function() {
