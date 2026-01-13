@@ -17,7 +17,24 @@ function load_content(data){
     
   }
   else{
-     document.getElementById("content").innerHTML = '<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark"> <div class="container-fluid"> <a class="navbar-brand"></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="navbarColor02"> <ul class="navbar-nav me-auto" id="nav_controller"> <li class="nav-item"> <a class="nav-link" href="/">Trang Chủ </a> </li> <li class="nav-item"> <a class="nav-link" href="?thongtinkhac">Thông Tin Khác</a> </li> <li class="nav-item"> <a class="nav-link active" href="?about">Về tôi</a> </li> </ul> </div> </div> </nav> <div id="a"> <div class="container" data-aos="zoom-in" data-aos-delay="100"> <br> <br> <div class="col-lg-8 pt-4 pt-lg-0 container"> <div class="row"> <div class="col-lg-6"> NOT FOUND - KHÔNG TÌM THẤY TRANG NÀY - NHẤN TRANG CHỦ ĐỂ TRỞ LẠI TRANG CHÍNH - tag:'+data+'</div> </div> </div> </div> </div>'
+    var url = new URL(data);
+    var utmSource = url.searchParams.get("utm_source");
+    var sourceText = "";
+    
+    switch (utmSource) {
+      case "ig":
+      case "instagram":
+        sourceText = "Instagram";
+        break;
+      case "fb":
+      case "facebook":
+        sourceText = "Facebook";
+        break;
+      default:
+        sourceText = "Không xác định nguồn truy cập";
+    }
+
+     document.getElementById("content").innerHTML = '<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark"> <div class="container-fluid"> <a class="navbar-brand"></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="navbarColor02"> <ul class="navbar-nav me-auto" id="nav_controller"> <li class="nav-item"> <a class="nav-link" href="/">Trang Chủ </a> </li> <li class="nav-item"> <a class="nav-link" href="?thongtinkhac">Thông Tin Khác</a> </li> <li class="nav-item"> <a class="nav-link active" href="?about">Về tôi</a> </li> </ul> </div> </div> </nav> <div id="a"> <div class="container" data-aos="zoom-in" data-aos-delay="100"> <br> <br> <div class="col-lg-8 pt-4 pt-lg-0 container"> <div class="row"> <div class="col-lg-6"> ĐÃ TRUY CẬP TỪ '+sourceText+' - ĐÃ GHI NHẬN LƯỢT TRUY CẬP<br><a href="/">Nhấn vào đây về trang chủ</a></div> </div> </div> </div> </div>'
   }
   changeBackground();
 }
