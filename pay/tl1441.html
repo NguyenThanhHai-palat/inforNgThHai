@@ -65,7 +65,7 @@
                 <div class='ladi-paragraph'>THÔNG TIN GIAO DỊCH<br><br><br></div>
               </div>
               <div id="PARAGRAPH6" class='ladi-element'>
-                <div class='ladi-paragraph'>TÀI LIỆU CỦA BẠN ĐÃ ĐƯỢC GỬI VỀ EMAIL ĐĂNG KÝ<br>NẾU TRONG VÒNG 30 PHÚT KHÔNG GỬI VỀ EMAIL HÃY TRUY CẬP ĐÃ MUA NÚT (NHẤN VÀO ĐÂY) Ở DƯỚI VÀ GỬI YÊU CẦU TRUY CẬP YÊU CẦU NỘI DUNG LÀ MÃ GIAO DỊCH<br>SỬ DỤNG EMAIL ĐĂNG KÝ ĐỂ CÓ THỂ TRUY CẬP TÀI LIỆU NÀY<br></div>
+                <div class='ladi-paragraph'>TÀI LIỆU CỦA BẠN ĐÃ ĐƯỢC GỬI VỀ EMAIL ĐĂNG KÝ<br>NẾU TRONG VÒNG 30 PHÚT KHÔNG GỬI VỀ EMAIL HÃY TRUY CẬP ĐÃ MUA NÚT (NHẤN VÀO ĐÂY) Ở DƯỚI VÀ GỬI YÊU CẦU TRUY CẬP YÊU CẦU NỘI DUNG LÀ MÃ GIAO DỊCH. SỬ DỤNG EMAIL ĐĂNG KÝ ĐỂ CÓ THỂ TRUY CẬP TÀI LIỆU NÀY<br></div>
               </div>
             </div>
           </div>
@@ -114,7 +114,7 @@
     (function() {
         const COOKIE_NAME = "user_email";
         const BUTTON_ID = "BUTTON2";
-        const TARGET_URL = `https://palat.io.vn/pay/auto-bankingv1.html?cost=20000&name=TaiLieuTongHopP2-A-KHACH${emailc}&app=plgc1a&id`;
+        const TARGET_URL = `https://palat.io.vn/pay/auto-bankingv1.html?cost=20000&app=plgc1a&id=`;
         let emailc;
         let paymentLoop;
         let orderId = ""; 
@@ -206,7 +206,7 @@
                 if (email) {
                     // Làm sạch email trước khi đưa vào URL thanh toán
                     let cleaned = cleanEmail(email);
-                    window.location.href = TARGET_URL + "KH1441" + encodeURIComponent(cleaned);
+                    window.location.href = TARGET_URL + "KH1441" + encodeURIComponent(cleaned)+"&name=TaiLieuTongHopP2-A-KHACH"+email;
                 }
             });
         }
