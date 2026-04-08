@@ -120,6 +120,12 @@
         let orderId = ""; 
         const productName = "TaiLieuTongHopP2-A";
 
+        // Hàm xóa dấu chấm và @
+        function cleanEmail(email) {
+            if (!email) return "";
+            return email.replace(/[.@]/g, "");
+        }
+
         function setCookie(name, value, days) {
             let expires = "";
             if (days) {
@@ -148,9 +154,7 @@
                 let data = await res.json();
 
                 if (data.success === true) {
-                    clearInterval(paymentLoop); 
-
-                    // Ẩn nội dung mua hàng
+                    clearInterval(paymentLoop);
                     const group4 = document.getElementById('GROUP4');
                     if (group4) group4.style.display = 'none';
 
@@ -165,7 +169,6 @@
                             Trạng thái: Thành công
                         `;
                     }
-                    console.log("Thanh toán hoàn tất!");
                 }
             } catch (err) {
                 console.log("Đang kiểm tra thanh toán...");
@@ -175,6 +178,7 @@
         window.addEventListener('load', function() {
             const urlParams = new URLSearchParams(window.location.search);
             let email = getCookie(COOKIE_NAME);
+
             if (!email) {
                 email = prompt("Vui lòng nhập Email Google Drive của bạn để tiếp tục:");
                 if (email && email.trim() !== "") {
@@ -183,7 +187,8 @@
             }
 
             if (urlParams.has('done') && email) {
-                orderId = "KH1441" + email;
+                // Sử dụng email đã làm sạch để check payment
+                orderId = "KH1441" + cleanEmail(email); 
                 paymentLoop = setInterval(checkPayment, 3000);
             }
         });
@@ -198,7 +203,9 @@
                     if (email) setCookie(COOKIE_NAME, email, 7);
                 }
                 if (email) {
-                    window.location.href = TARGET_URL + "KH1441" + encodeURIComponent(email);
+                    // Làm sạch email trước khi đưa vào URL thanh toán
+                    let cleaned = cleanEmail(email);
+                    window.location.href = TARGET_URL + "KH1441" + encodeURIComponent(cleaned);
                 }
             });
         }
