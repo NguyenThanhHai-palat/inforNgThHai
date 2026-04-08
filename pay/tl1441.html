@@ -114,8 +114,8 @@
     (function() {
         const COOKIE_NAME = "user_email";
         const BUTTON_ID = "BUTTON2";
-        const TARGET_URL = "https://palat.io.vn/pay/auto-bankingv1.html?cost=20000&name=TaiLieuTongHopP2-A&app=plgc1a&id=";
-        
+        const TARGET_URL = `https://palat.io.vn/pay/auto-bankingv1.html?cost=20000&name=TaiLieuTongHopP2-A-KHACH${emailc}&app=plgc1a&id`;
+        let emailc;
         let paymentLoop;
         let orderId = ""; 
         const productName = "TaiLieuTongHopP2-A";
@@ -178,11 +178,12 @@
         window.addEventListener('load', function() {
             const urlParams = new URLSearchParams(window.location.search);
             let email = getCookie(COOKIE_NAME);
-
+            emailc = email
             if (!email) {
                 email = prompt("Vui lòng nhập Email Google Drive của bạn để tiếp tục:");
                 if (email && email.trim() !== "") {
                     setCookie(COOKIE_NAME, email, 7);
+                    emailc = email
                 }
             }
 
