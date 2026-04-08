@@ -11,6 +11,9 @@ if(app == "PalatStore"){
 }else if(app == "PalatStoreApp"){
     company = "https://dev.palat.io.vn/store/checkout-app"
 }
+else if(app == "plgc1a"){
+    company = "https://palat.io.vn/pay/tl1441.html?done"
+}
 else{
 
 }
@@ -83,6 +86,18 @@ async function checkPayment() {
             clearInterval(loop);
 
             console.log("Thanh toán OK:", data.data);
+            if (headline9) {
+                if(company!=""){
+                    setTimeout(function() {
+                window.location.href = company; 
+            }, 3000);
+                }
+                else
+                headline9.innerHTML = `<p style="color:white">Sau khi quét chờ 5s để xác thực</p>
+                `;
+                
+            }
+             
         }
 
     } catch (err) {
