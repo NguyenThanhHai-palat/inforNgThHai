@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Xếp nguyện vọng đại học</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    select, button, input {
+      padding: 8px;
+      margin: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #d2feff;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background: #b6e8ff;
+    }
+
+    .no-print {
+      /* dùng cho PDF */
+    }
+
+    .actions button {
+      margin: 2px;
+    }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+
+<h2>Xếp Nguyện Vọng Đại Học</h2>
+
+<select id="uniSelect">
+  <option value="">-- Chọn trường --</option>
+</select>
+
+<select id="majorSelect">
+  <option value="">-- Chọn ngành --</option>
+</select>
+
+<button onclick="addWish()">Thêm nguyện vọng</button>
+<hr>
+
+
+<h4>Nhập điểm thủ công (tuỳ chọn)</h4>
+<input id="customMajor" placeholder="Hoặc nhập ngành thủ công">
+<input id="score_thpt24" placeholder="2024 THPT">
+<input id="score_dgnl24" placeholder="2024 ĐGNL">
+
+<input id="score_thpt25" placeholder="2025 THPT">
+<input id="score_dgnl25" placeholder="2025 ĐGNL">
+<button onclick="exportPDF()">Xuất PDF</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Tên ngành</th>
+      <th>Tên trường</th>
+      <th>2024 THPT</th>
+      <th>2024 ĐGNL</th>
+      <th>2025 THPT</th>
+      <th>2025 ĐGNL</th>
+      <th>Ghi chú</th>
+      <th class="no-print">Hành động</th>
+    </tr>
+  </thead>
+
+  <tbody id="wishTable"></tbody>
+</table>
+
+<script>
+let data = {};
+let wishes = [];
+
+/* ======================
+   INIT
+====================== */
+loadFromLocalStorage();
+loadData();
+
+/* ======================
+   LOAD API
+====================== */
+async function loadData() {
+  try {
+    const res = await fetch("https://data.palat.io.vn/data1/read");
+    const json = await res.json();
+
+    data = json;
+
+    renderUniversities();
+    renderTable(); // 🔥 quan trọng: render lại sau khi có data
+
+  } catch (err) {
+    alert("Không tải được dữ liệu!");
+    console.error(err);
+  }
+}
+
+/* ======================
+   LOCAL STORAGE
+====================== */
+function saveToLocalStorage() {
+  localStorage.setItem("wishes", JSON.stringify(wishes));
+}
+
+function loadFromLocalStorage() {
+  const saved = localStorage.getItem("wishes");
+  if (saved) {
+    wishes = JSON.parse(saved);
+  }
+}
+
+/* ======================
+   RENDER TRƯỜNG
+====================== */
+function renderUniversities() {
+  const uniSelect = document.getElementById("uniSelect");
+  uniSelect.innerHTML = '<option value="">-- Chọn trường --</option>';
+
+  Object.keys(data).forEach(uni => {
+    const opt = document.createElement("option");
+    opt.value = uni;
+    opt.textContent = uni;
+    uniSelect.appendChild(opt);
+  });
+}
+
+/* ======================
+   CHỌN TRƯỜNG -> NGÀNH
+====================== */
+document.getElementById("uniSelect").addEventListener("change", function () {
+  const majorSelect = document.getElementById("majorSelect");
+  majorSelect.innerHTML = '<option value="">-- Chọn ngành --</option>';
+
+  const selectedUni = this.value;
+  if (!selectedUni) return;
+
+  const majors = data[selectedUni]?.nganhlinhvuc || [];
+
+  majors.forEach((m, index) => {
+    const opt = document.createElement("option");
+    opt.value = index;
+    opt.textContent = m.name;
+    majorSelect.appendChild(opt);
+  });
+});
+
+/* ======================
+   THÊM NGUYỆN VỌNG
+====================== */
+function addWish() {
+  const uni = document.getElementById("uniSelect").value;
+  const majorIndex = document.getElementById("majorSelect").value;
+  const customMajorEl = document.getElementById("customMajor");
+
+  const customMajor = customMajorEl ? customMajorEl.value.trim() : "";
+
+  if (!uni) {
+    alert("Chọn trường!");
+    return;
+  }
+
+  let major;
+
+if (majorIndex !== "" && data[uni]?.nganhlinhvuc?.[majorIndex]) {
+  major = data[uni].nganhlinhvuc[majorIndex];
+}
+else if (customMajor !== "") {
+  major = {
+    name: customMajor,
+    dc2024: {},
+    dc2025: {}
+  };
+}
+else {
+  alert("Chọn hoặc nhập ngành!");
+  return;
+}
+
+  const thpt24 = document.getElementById("score_thpt24").value;
+  const dgnl24 = document.getElementById("score_dgnl24").value;
+  const thpt25 = document.getElementById("score_thpt25").value;
+  const dgnl25 = document.getElementById("score_dgnl25").value;
+
+  major.dc2024 = {
+    thpt: thpt24 || major.dc2024?.thpt || "",
+    dgnl: dgnl24 || major.dc2024?.dgnl || ""
+  };
+
+  major.dc2025 = {
+    thpt: thpt25 || major.dc2025?.thpt || "",
+    dgnl: dgnl25 || major.dc2025?.dgnl || ""
+  };
+
+  wishes.push({
+    uni,
+    major,
+    ghichu: data[uni]?.ghichu || "",
+    custom: true
+  });
+
+  saveToLocalStorage();
+  renderTable();
+
+  if (customMajorEl) customMajorEl.value = "";
+  customMajorEl.value = "";
+  document.getElementById("majorSelect").value = "";
+
+  document.getElementById("score_thpt24").value = "";
+  document.getElementById("score_dgnl24").value = "";
+  document.getElementById("score_thpt25").value = "";
+  document.getElementById("score_dgnl25").value = "";
+}
+function removeWish(index) {
+  wishes.splice(index, 1);
+  saveToLocalStorage();
+  renderTable();
+}
+
+function moveUp(index) {
+  if (index === 0) return;
+  [wishes[index], wishes[index - 1]] = [wishes[index - 1], wishes[index]];
+  saveToLocalStorage();
+  renderTable();
+}
+
+function moveDown(index) {
+  if (index === wishes.length - 1) return;
+  [wishes[index], wishes[index + 1]] = [wishes[index + 1], wishes[index]];
+  saveToLocalStorage();
+  renderTable();
+}
+
+function renderTable() {
+  const table = document.getElementById("wishTable");
+  table.innerHTML = "";
+
+  wishes.forEach((w, index) => {
+    table.innerHTML += `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${w.major?.name || ""}</td>
+        <td>${w.uni}</td>
+        <td>${w.major?.dc2024?.thpt ?? ""}</td>
+        <td>${w.major?.dc2024?.dgnl ?? ""}</td>
+        <td>${w.major?.dc2025?.thpt ?? ""}</td>
+        <td>${w.major?.dc2025?.dgnl ?? ""}</td>
+        <td>${w.ghichu}</td>
+        <td class="no-print">
+          <button onclick="moveUp(${index})">↑</button>
+          <button onclick="moveDown(${index})">↓</button>
+          <button onclick="removeWish(${index})">X</button>
+        </td>
+      </tr>
+    `;
+  });
+}
+function exportPDF() {
+  const elements = document.querySelectorAll(".no-print");
+
+  elements.forEach(el => el.style.display = "none");
+
+  const element = document.body;
+
+  const opt = {
+    margin: 0.5,
+    filename: 'nguyen-vong.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+  };
+
+  html2pdf().set(opt).from(element).save().then(() => {
+    elements.forEach(el => el.style.display = "");
+  });
+}
+</script>
+
+</body>
+</html>
