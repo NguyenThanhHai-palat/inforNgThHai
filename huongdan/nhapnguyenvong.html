@@ -96,15 +96,10 @@
 let data = {};
 let wishes = [];
 
-/* ======================
-   INIT
-====================== */
+
 loadFromLocalStorage();
 loadData();
 
-/* ======================
-   LOAD API
-====================== */
 async function loadData() {
   try {
     const res = await fetch("https://data.palat.io.vn/data1/read");
@@ -113,17 +108,15 @@ async function loadData() {
     data = json;
 
     renderUniversities();
-    renderTable(); // 🔥 quan trọng: render lại sau khi có data
-
+    renderTable();
   } catch (err) {
     alert("Không tải được dữ liệu!");
     console.error(err);
   }
 }
 
-/* ======================
-   LOCAL STORAGE
-====================== */
+
+
 function saveToLocalStorage() {
   localStorage.setItem("wishes", JSON.stringify(wishes));
 }
@@ -135,9 +128,7 @@ function loadFromLocalStorage() {
   }
 }
 
-/* ======================
-   RENDER TRƯỜNG
-====================== */
+
 function renderUniversities() {
   const uniSelect = document.getElementById("uniSelect");
   uniSelect.innerHTML = '<option value="">-- Chọn trường --</option>';
@@ -150,9 +141,7 @@ function renderUniversities() {
   });
 }
 
-/* ======================
-   CHỌN TRƯỜNG -> NGÀNH
-====================== */
+
 document.getElementById("uniSelect").addEventListener("change", function () {
   const majorSelect = document.getElementById("majorSelect");
   majorSelect.innerHTML = '<option value="">-- Chọn ngành --</option>';
@@ -170,9 +159,6 @@ document.getElementById("uniSelect").addEventListener("change", function () {
   });
 });
 
-/* ======================
-   THÊM NGUYỆN VỌNG
-====================== */
 function addWish() {
   const uni = document.getElementById("uniSelect").value;
   const majorIndex = document.getElementById("majorSelect").value;
