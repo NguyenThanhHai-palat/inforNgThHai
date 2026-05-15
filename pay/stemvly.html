@@ -158,7 +158,7 @@
         async function checkPayment() {
             if (!orderId) return;
             try {
-                let res = await fetch(`https://dnc-svc.palat.io.vn/checkpayment?code=${orderId}&amount=20000`);
+                let res = await fetch(`https://dnc-svc.palat.io.vn/checkpayment?code=${orderId}&amount=10000`);
                 let data = await res.json();
 
                 if (data.success === true) {
