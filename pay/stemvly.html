@@ -188,8 +188,10 @@
             const urlParams = new URLSearchParams(window.location.search);
             let email = getCookie(COOKIE_NAME);
             emailc = email
+            orderId = "DT10" + cleanEmail(email); 
             checkPayment();
             if (!email) {
+                orderId = ""; 
                 email = prompt("Cho xin tên để ghi nhận đã đóng:");
                 if (email && email.trim() !== "") {
                     setCookie(COOKIE_NAME, email, 7);
