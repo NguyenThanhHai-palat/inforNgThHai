@@ -169,7 +169,7 @@
                     const infoBox = document.querySelector("#PARAGRAPH5 .ladi-paragraph");
                     if (infoBox) {
                         infoBox.innerHTML = `
-                            <b>THÔNG TIN GIAO DỊCH của ${COOKIE_NAME}</b><br>
+                            <b>THÔNG TIN GIAO DỊCH của ${getCookie(COOKIE_NAME)}</b><br>
                             Tên giao dịch: ${productName}<br>
                             Thời gian: ${data.data.time}<br>
                             Số tiền: ${data.data.amount} VNĐ<br>
