@@ -184,13 +184,16 @@
         }
 
         window.addEventListener('load', function() {
+          
             const urlParams = new URLSearchParams(window.location.search);
             let email = getCookie(COOKIE_NAME);
             emailc = email
+            checkPayment();
             if (!email) {
                 email = prompt("Cho xin tên để ghi nhận đã đóng:");
                 if (email && email.trim() !== "") {
                     setCookie(COOKIE_NAME, email, 7);
+                    checkPayment()
                     emailc = email
                 }
             }
