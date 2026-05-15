@@ -14,6 +14,9 @@ if(app == "PalatStore"){
 else if(app == "plgc1a"){
     company = "https://palat.io.vn/pay/tl1441.html?done"
 }
+else if(app == "plgc1b"){
+    company = "https://palat.io.vn/pay/stemvly.html?done"
+}
 else{
 
 }
