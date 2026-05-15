@@ -94,7 +94,7 @@
                 <div class='ladi-button'>
                   <div class="ladi-button-background"></div>
                   <div id="BUTTON_TEXT2" class='ladi-element ladi-button-headline'>
-                    <p class='ladi-headline'    >10.000 VNĐ</p>
+                    <p class='ladi-headline'    > NHẤN VÀO ĐÂY ĐỂ ĐÓNG : 10.000 VNĐ</p>
                   </div>
                 </div>
               </div>
@@ -213,7 +213,7 @@
                 if (email) {
                     // Làm sạch email trước khi đưa vào URL thanh toán
                     let cleaned = cleanEmail(email);
-                    window.location.href = TARGET_URL + "DT10" + encodeURIComponent(cleaned)+"&name=TenDaDong"+email;
+                    window.location.href = TARGET_URL + "DT10" + encodeURIComponent(cleaned)+"&name="+email+" Đã đóng";
                 }
             });
         }
