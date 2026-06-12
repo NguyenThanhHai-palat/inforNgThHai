@@ -17,6 +17,9 @@ else if(app == "plgc1a"){
 else if(app == "plgc1b"){
     company = "https://palat.io.vn/pay/stemvly.html?done"
 }
+else if(app == "pmca"){
+    company = "https://mc-web.palat.io.vn/?done"
+}
 else{
 
 }
